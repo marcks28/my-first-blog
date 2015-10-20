@@ -1,31 +1,34 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
     <head>
         <meta charset=utf-8/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static "css/blog.css" %}">
+
+
         <title>Blog MyFirst</title>
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="#">MyBlog</a></h1>
         </div>
-        <div>
-            <p>Published</p>
-            <h2><a href="">Meu primeiro post</a></h2>
-            
-            {% for post in posts %}
-               <div>
-                   <p>published: {{ post.published_date }}</p>
-                   <h1><a href="">{{ post.title }}</a></h1>
-                   <p>{{ post.text|linebreaks }}</p>
+
+        <div class="content container">
+             <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                {{ post.published_date }}
+                            </div>
+                        <h1><a href="">{{ post.title }}</a></h1>
+                        <p>{{ post.text|linebreaks }}</p>
+                        </div>
+                    {% endfor %}
                </div>
-            {% endfor %}
-
-        </div>
-
-        <div>
-            <p>published: 28.08.2008</p> 
-            <h2><a href="">Segundo post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+           </div>
         </div>
     </body>
 
